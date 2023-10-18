@@ -22,16 +22,16 @@ public class OpenCVproto extends OpMode {
 
     @Override
     public void init() {
-        WebcamName webcanName = hardwareMap.get(WebcamName.class, "webcam1");
+        WebcamName webcamName = hardwareMap.get(WebcamName.class, "webcam1");
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        webcam1 = OpenCvCameraFactory.getInstance().createWebcam(webcanName, cameraMonitorViewId);
+        webcam1 = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
 
         webcam1.setPipeline(new PipelineProto());
 
         webcam1.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
-                webcam1.startStreaming(650, 360, OpenCvCameraRotation.UPRIGHT);
+                webcam1.startStreaming(1280, 720, OpenCvCameraRotation.UPRIGHT);
             }
 
             @Override
@@ -62,8 +62,10 @@ public class OpenCVproto extends OpMode {
             Imgproc.cvtColor(input, YCbCr, Imgproc.COLOR_RGB2YCrCb);
             telemetry.addLine("Pipeline running");
 
-            Rect leftRect = new Rect(1, 1, 319, 359);
-            Rect rightRect = new Rect(320, 1, 319, 359);
+            Rect leftRect = new Rect(1, 1, 213, 359);
+            Rect rightRect = new Rect(213, 1, 213, 359);
+            //Rect middleRect = new Rect(426, 1, 213, 359);
+
 
             input.copyTo(outPut);
             Imgproc.rectangle(outPut, leftRect, rectColor, 2);
