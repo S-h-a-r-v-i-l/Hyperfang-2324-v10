@@ -49,10 +49,12 @@ public class OpenCVproto extends OpMode {
     class PipelineProto extends OpenCvPipeline{
 
         Mat YCbCr = new Mat();
+        Mat midCrop;
         Mat leftCrop;
         Mat rightCrop;
         double leftavgfin;
         double rightavgfin;
+        double midavgfin;
         Mat outPut = new Mat();
         Scalar rectColor = new Scalar(255.0, 0.0, 0.0);
 
@@ -64,26 +66,31 @@ public class OpenCVproto extends OpMode {
 
             Rect leftRect = new Rect(1, 1, 213, 359);
             Rect rightRect = new Rect(213, 1, 213, 359);
-            //Rect middleRect = new Rect(426, 1, 213, 359);
+            Rect midRect = new Rect(426, 1, 213, 359);
 
 
             input.copyTo(outPut);
             Imgproc.rectangle(outPut, leftRect, rectColor, 2);
             Imgproc.rectangle(outPut, rightRect, rectColor, 2);
+            Imgproc.rectangle(outPut, midRect, rectColor, 2);
 
             leftCrop = YCbCr.submat(leftRect);
             rightCrop = YCbCr.submat(rightRect);
+            midCrop = YCbCr.submat(midRect);
 
             Scalar leftavg = Core.mean(leftCrop);
             Scalar rightavg = Core.mean(rightCrop);
+            Scalar midavg = Core.mean(midCrop);
 
             leftavgfin = leftavg.val[0];
             rightavgfin = rightavg.val[0];
+            midavgfin = midavg.val[0];
 
-            if (leftavgfin > rightavgfin) {
+            if (leftavgfin > rightavgfin && leftavgfin > midavgfin) {
                 telemetry.addLine("Left");
-            }
-            else {
+            } else if(midavgfin > leftavgfin && midavgfin > rightavgfin){
+                telemetry.addLine("Middle");
+            } else {
                 telemetry.addLine("Right");
             }
 
