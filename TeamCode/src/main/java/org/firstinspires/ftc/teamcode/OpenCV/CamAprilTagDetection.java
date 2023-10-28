@@ -174,6 +174,7 @@ public class CamAprilTagDetection extends LinearOpMode
 
         /* Actually do something useful ||
         Check against returned val from OpenCvProto(char???) then use switch statement to decide on auto path */
+
         if(tagOfInterest.id == blueL){
             //blue left code
         }else if(tagOfInterest == null || tagOfInterest.id == blueC){
