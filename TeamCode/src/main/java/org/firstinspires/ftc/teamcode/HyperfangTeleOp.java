@@ -34,7 +34,7 @@ public class HyperfangTeleOp extends LinearOpMode{
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
-        gr.setDirection(DcMotorEx.Direction.REVERSE)
+        gr.setDirection(DcMotorEx.Direction.REVERSE);
 
         while (opModeIsActive()) {
             drive = -gamepad1.left_stick_y;
