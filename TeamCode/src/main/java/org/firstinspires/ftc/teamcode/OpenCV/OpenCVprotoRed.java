@@ -16,7 +16,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 @Autonomous
-public class OpenCVproto extends OpMode {
+public class OpenCVprotoRed extends OpMode {
 
     OpenCvWebcam webcam1 = null;
 
@@ -82,7 +82,9 @@ public class OpenCVproto extends OpMode {
             Scalar rightavg = Core.mean(rightCrop);
             Scalar midavg = Core.mean(midCrop);
 
-            leftavgfin = leftavg.val[0];
+            leftavgfin = leftavg.val[0
+                    +++++++++++++++++++++++++++++++++++
+                    ];
             rightavgfin = rightavg.val[0];
             midavgfin = midavg.val[0];
 
@@ -99,3 +101,34 @@ public class OpenCVproto extends OpMode {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
