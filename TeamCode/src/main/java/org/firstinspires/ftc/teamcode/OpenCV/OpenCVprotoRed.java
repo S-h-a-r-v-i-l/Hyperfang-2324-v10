@@ -82,16 +82,13 @@ public class OpenCVprotoRed extends OpMode {
             Scalar rightavg = Core.mean(rightCrop);
             Scalar midavg = Core.mean(midCrop);
 
-            leftavgfin = leftavg.val[0
-                    +++++++++++++++++++++++++++++++++++
-                    ];
+            leftavgfin = leftavg.val[0];
             rightavgfin = rightavg.val[0];
             midavgfin = midavg.val[0];
 
             if (leftavgfin > rightavgfin && leftavgfin > midavgfin) {
                 telemetry.addLine("Left");
-            } else if(midavgfin > leftavgfin && midavgfin > rightavgfin){
-                telemetry.addLine("Middle");
+                  telemetry.addLine("Middle");
             } else {
                 telemetry.addLine("Right");
             }
