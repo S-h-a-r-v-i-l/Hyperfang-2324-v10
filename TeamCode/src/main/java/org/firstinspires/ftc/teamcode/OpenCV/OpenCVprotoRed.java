@@ -42,7 +42,15 @@ public class OpenCVprotoRed extends OpMode {
     }
 
     @Override
+    public void start() {
+        //move forward or something
+
+    }
+
+    @Override
     public void loop() {
+
+
 
     }
 
