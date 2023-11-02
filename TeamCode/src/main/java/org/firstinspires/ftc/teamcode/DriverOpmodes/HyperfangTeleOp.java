@@ -31,6 +31,7 @@ public class HyperfangTeleOp extends LinearOpMode{
         gr = hardwareMap.get(DcMotorEx.class, "liftRight");
         psl = hardwareMap.get(CRServo.class, "percyServoLeft");
         psr = hardwareMap.get(CRServo.class, "percyServoRight");
+        intake = hardwareMap.get(DcMotorEx.class, "intake");
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
@@ -58,6 +59,8 @@ public class HyperfangTeleOp extends LinearOpMode{
 
             gl.setPower(gamepad2.right_stick_y);
             gr.setPower(gamepad2.right_stick_y);
+            intake.setPower(gamepad2.right_trigger);
+
 
             sleep(50);
 
