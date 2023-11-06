@@ -19,8 +19,6 @@ import org.openftc.easyopencv.OpenCvWebcam;
 public class OpenCVprotoBlue extends OpMode {
 
     OpenCvWebcam webcam1 = null;
-    public enum Placement{ R, C, L}
-    public Placement placement;
 
     @Override
     public void init() {
@@ -28,7 +26,7 @@ public class OpenCVprotoBlue extends OpMode {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam1 = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
 
-        webcam1.setPipeline(new pipelineBlue());
+        webcam1.setPipeline(new PipelineProto());
 
         webcam1.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
@@ -48,7 +46,7 @@ public class OpenCVprotoBlue extends OpMode {
 
     }
 
-    public class pipelineBlue extends OpenCvPipeline{
+    class PipelineProto extends OpenCvPipeline{
 
         Mat YCbCr = new Mat();
         Mat midCrop;
@@ -89,18 +87,15 @@ public class OpenCVprotoBlue extends OpMode {
             midavgfin = midavg.val[2];
 
             if (leftavgfin > rightavgfin && leftavgfin > midavgfin) {
-                placement = Placement.L;
+                telemetry.addLine("Left");
             } else if(midavgfin > leftavgfin && midavgfin > rightavgfin){
-                placement = Placement.C;
+                telemetry.addLine("Middle");
             } else {
-                placement = Placement.R;
+                telemetry.addLine("Right");
             }
 
             return outPut;
 
         }
-
-        public Placement getPlacement() { return placement; }
     }
-
 }
