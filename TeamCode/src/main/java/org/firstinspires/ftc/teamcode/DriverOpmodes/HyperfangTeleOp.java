@@ -39,7 +39,7 @@ public class HyperfangTeleOp extends LinearOpMode{
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
-        psr.setDirection(CRServo.Direction.REVERSE);
+        psl.setDirection(CRServo.Direction.REVERSE);
 
         waitForStart();
 
@@ -72,11 +72,11 @@ public class HyperfangTeleOp extends LinearOpMode{
                 psr.setPower(1);
                 telemetry.addLine("hi");
             } else if (gamepad2.left_bumper) {
+                psl.setPower(-1);
+                psr.setPower(-1);
+            } else {
                 psl.setPower(0);
                 psr.setPower(0);
-            } else {
-                psl.setPower(0.5);
-                psr.setPower(0.5);
                 telemetry.addLine("hi3");
             }
 
