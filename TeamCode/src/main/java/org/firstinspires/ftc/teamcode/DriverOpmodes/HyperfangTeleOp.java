@@ -1,17 +1,19 @@
 package org.firstinspires.ftc.teamcode.DriverOpmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+@TeleOp
 public class HyperfangTeleOp extends LinearOpMode{
     public DcMotorEx fl = null;
     public DcMotorEx bl = null;
     public DcMotorEx fr = null;
     public DcMotorEx br = null;
-    public DcMotorEx sl = null;
-    public DcMotorEx sr = null;
+    public DcMotorEx ll = null;
+    public DcMotorEx lr = null;
     public DcMotorEx intake = null;
 
     public CRServo psl = null;
@@ -25,20 +27,21 @@ public class HyperfangTeleOp extends LinearOpMode{
         double turn;
         double max;
 
-        fl = hardwareMap.get(DcMotorEx.class, "leftFront");
-        bl = hardwareMap.get(DcMotorEx.class, "leftBack");
-        fr = hardwareMap.get(DcMotorEx.class, "rightFront");
-        br = hardwareMap.get(DcMotorEx.class, "rightBack");
-        sl = hardwareMap.get(DcMotorEx.class, "liftLeft");
-        sr = hardwareMap.get(DcMotorEx.class, "liftRight");
-        psl = hardwareMap.get(CRServo.class, "percyServoLeft");
-        psr = hardwareMap.get(CRServo.class, "percyServoRight");
+        fl = hardwareMap.get(DcMotorEx.class, "frontLeft");
+        bl = hardwareMap.get(DcMotorEx.class, "backLeft");
+        fr = hardwareMap.get(DcMotorEx.class, "frontRight");
+        br = hardwareMap.get(DcMotorEx.class, "backRight");
+        ll = hardwareMap.get(DcMotorEx.class, "leftLift");
+        lr = hardwareMap.get(DcMotorEx.class, "rightLift");
+        psl = hardwareMap.get(CRServo.class, "percyL");
+        psr = hardwareMap.get(CRServo.class, "percyR");
         intake = hardwareMap.get(DcMotorEx.class, "intake");
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
-        sr.setDirection(DcMotorEx.Direction.REVERSE);
         psr.setDirection(CRServo.Direction.REVERSE);
+
+        waitForStart();
 
         while (opModeIsActive()) {
             drive = -gamepad1.left_stick_y;
@@ -60,16 +63,25 @@ public class HyperfangTeleOp extends LinearOpMode{
             fr.setPower(right);
             br.setPower(right);
 
-            sl.setPower(gamepad2.right_stick_y);
-            sr.setPower(gamepad2.right_stick_y);
+            ll.setPower(gamepad2.right_stick_y);
+            lr.setPower(gamepad2.right_stick_y);
             intake.setPower(gamepad2.right_trigger);
 
-            psl.setPower(gamepad2.left_stick_y);
-            psr.setPower(gamepad2.left_stick_y);
+            if (gamepad2.right_bumper) {
+                psl.setPower(1);
+                psr.setPower(1);
+                telemetry.addLine("hi");
+            } else if (gamepad2.left_bumper) {
+                psl.setPower(0);
+                psr.setPower(0);
+            } else {
+                psl.setPower(0.5);
+                psr.setPower(0.5);
+                telemetry.addLine("hi3");
+            }
 
             sleep(50);
 
         }
-
     }
 }

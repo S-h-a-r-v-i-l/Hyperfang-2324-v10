@@ -26,7 +26,7 @@ public class OpenCVprotoRed extends OpMode {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam1 = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
 
-        webcam1.setPipeline(new PipelineProto());
+        webcam1.setPipeline(new PipelineRed());
 
         webcam1.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
@@ -46,7 +46,7 @@ public class OpenCVprotoRed extends OpMode {
 
     }
 
-    class PipelineProto extends OpenCvPipeline{
+    class PipelineRed extends OpenCvPipeline{
 
         Mat YCbCr = new Mat();
         Mat midCrop;
@@ -88,7 +88,8 @@ public class OpenCVprotoRed extends OpMode {
 
             if (leftavgfin > rightavgfin && leftavgfin > midavgfin) {
                 telemetry.addLine("Left");
-                  telemetry.addLine("Middle");
+            } else if (midavgfin > leftavgfin && midavgfin > rightavgfin) {
+                telemetry.addLine("middle");
             } else {
                 telemetry.addLine("Right");
             }
