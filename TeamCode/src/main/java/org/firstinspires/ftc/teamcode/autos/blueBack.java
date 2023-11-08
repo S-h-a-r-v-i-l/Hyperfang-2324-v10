@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
-public class blueFront extends LinearOpMode {
+public class blueBack extends LinearOpMode {
 
     public DcMotorEx fl = null;
     public DcMotorEx bl = null;
@@ -64,7 +64,23 @@ public class blueFront extends LinearOpMode {
             }
             timer.reset();
             timer.startTime();
+            while (timer.seconds() < 3) {
+                fl.setPower(-0.75);
+                bl.setPower(0.75);
+                fr.setPower(0.75);
+                br.setPower(-0.75);
+            }
+            timer.reset();
+            timer.startTime();
             while (timer.seconds() < 2) {
+                fl.setPower(0.75);
+                fr.setPower(0.75);
+                bl.setPower(0.75);
+                br.setPower(0.75);
+            }
+            timer.reset();
+            timer.startTime();
+            while (timer.seconds() < 1){
                 fl.setPower(-0.75);
                 bl.setPower(0.75);
                 fr.setPower(0.75);
