@@ -53,47 +53,46 @@ public class HyperfangTeleOp extends LinearOpMode{
         waitForStart();
 
         while (opModeIsActive()) {
-            drive = -gamepad1.left_stick_y;
-            turn  =  gamepad1.right_stick_x;
+            double y = -gamepad1.left_stick_y; // Remember, Y stick value is reversed
+            double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
+            double rx = gamepad1.right_stick_x;
 
-            left  = drive + turn;
-            right = drive - turn;
+            // Denominator is the largest motor power (absolute value) or 1
+            // This ensures all the powers maintain the same ratio,
+            // but only if at least one is out of the range [-1, 1]
+            double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
+            double frontLeftPower = (y + x + rx) / denominator;
+            double backLeftPower = (y - x + rx) / denominator;
+            double frontRightPower = (y - x - rx) / denominator;
+            double backRightPower = (y + x - rx) / denominator;
 
-            max = Math.max(Math.abs(left), Math.abs(right));
-
-            if (max > 1.0)
-            {
-                left /= max;
-                right /= max;
-            }
-
-            fl.setPower(left);
-            bl.setPower(left);
-            fr.setPower(right);
-            br.setPower(right);
+            fl.setPower(frontLeftPower);
+            bl.setPower(backLeftPower);
+            fr.setPower(frontRightPower);
+            br.setPower(backRightPower);
 
             ll.setPower(gamepad2.right_stick_y);
             lr.setPower(gamepad2.right_stick_y);
             intake.setPower(gamepad2.right_trigger);
+            intake.setPower(-1 * gamepad2.left_trigger);
             telemetry.addLine("continuous");
 
             if (gamepad2.right_bumper) {
-                psl.setPower(1);
-                psr.setPower(1);
-                telemetry.addLine("hi");
+            psl.setPower(1);
+            psr.setPower(1);
+            telemetry.addLine("hi");
             } else if (gamepad2.left_bumper) {
-                psl.setPower(-1);
-                psr.setPower(-1);
-                telemetry.addLine("hi2");
+            psl.setPower(-1);
+            psr.setPower(-1);
+            telemetry.addLine("hi2");
             } else {
-                psl.setPower(0);
-                psr.setPower(0);
-                telemetry.addLine("hi3");
+            psl.setPower(0);
+            psr.setPower(0);
+            telemetry.addLine("hi3");
             }
 
             telemetry.update();
             sleep(50);
-
         }
     }
 }
