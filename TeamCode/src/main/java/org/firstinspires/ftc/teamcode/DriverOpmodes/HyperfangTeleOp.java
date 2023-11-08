@@ -41,6 +41,15 @@ public class HyperfangTeleOp extends LinearOpMode{
         bl.setDirection(DcMotorEx.Direction.REVERSE);
         psl.setDirection(CRServo.Direction.REVERSE);
 
+        fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+        bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+        fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+        br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+
         waitForStart();
 
         while (opModeIsActive()) {
@@ -66,6 +75,7 @@ public class HyperfangTeleOp extends LinearOpMode{
             ll.setPower(gamepad2.right_stick_y);
             lr.setPower(gamepad2.right_stick_y);
             intake.setPower(gamepad2.right_trigger);
+            telemetry.addLine("continuous");
 
             if (gamepad2.right_bumper) {
                 psl.setPower(1);
@@ -74,12 +84,14 @@ public class HyperfangTeleOp extends LinearOpMode{
             } else if (gamepad2.left_bumper) {
                 psl.setPower(-1);
                 psr.setPower(-1);
+                telemetry.addLine("hi2");
             } else {
                 psl.setPower(0);
                 psr.setPower(0);
                 telemetry.addLine("hi3");
             }
 
+            telemetry.update();
             sleep(50);
 
         }
