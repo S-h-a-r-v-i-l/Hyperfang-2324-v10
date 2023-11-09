@@ -41,7 +41,7 @@ public class redFront extends LinearOpMode {
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
-        psl.setDirection(CRServo.Direction.REVERSE);
+        psr.setDirection(CRServo.Direction.REVERSE);
 
         fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
         bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
