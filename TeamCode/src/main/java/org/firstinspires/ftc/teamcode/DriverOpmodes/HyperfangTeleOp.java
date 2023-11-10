@@ -73,7 +73,7 @@ public class HyperfangTeleOp extends LinearOpMode{
 
             // ll.setPower(gamepad2.right_stick_y);
             // lr.setPower(gamepad2.right_stick_y);
-            intake.setPower(gamepad2.left_stick_y-0.2 );
+            intake.setPower(gamepad2.left_stick_y );
             telemetry.addLine("continuous");
 
             if (gamepad2.right_bumper) {
