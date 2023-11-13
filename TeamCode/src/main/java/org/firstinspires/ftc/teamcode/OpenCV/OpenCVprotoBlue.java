@@ -105,9 +105,9 @@ public class OpenCVprotoBlue extends OpMode {
             Imgproc.cvtColor(input, YCbCr, Imgproc.COLOR_RGB2YCrCb);
             telemetry.addLine("Pipeline running");
 
-            Rect leftRect = new Rect(1, 1, 213, 359);
-            Rect rightRect = new Rect(213, 1, 213, 359);
-            Rect midRect = new Rect(426, 1, 213, 359);
+            Rect leftRect = new Rect(1, 1, 426, 720);
+            Rect rightRect = new Rect(426, 1, 846, 720);
+            Rect midRect = new Rect(846, 1, 1280, 720);
 
 
             input.copyTo(outPut);
