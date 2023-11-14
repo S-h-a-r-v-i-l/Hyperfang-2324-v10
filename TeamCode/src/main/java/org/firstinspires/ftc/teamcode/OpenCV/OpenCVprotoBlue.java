@@ -96,7 +96,7 @@ public class OpenCVprotoBlue extends OpMode {
         double rightavgfin;
         double midavgfin;
         Mat outPut = new Mat();
-        Scalar rectColor = new Scalar(255.0, 0.0, 0.0);
+        Scalar rectColor = new Scalar(0.0, 0.0, 255.0);
 
         @Override
         public Mat processFrame(Mat input) {
