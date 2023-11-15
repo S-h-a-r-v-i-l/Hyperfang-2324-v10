@@ -2,13 +2,19 @@ package org.firstinspires.ftc.teamcode.OpenCV;
 
 import static android.os.SystemClock.sleep;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
+import com.acmerobotics.roadrunner.trajectory.Trajectory;
+import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Rect;
@@ -96,7 +102,7 @@ public class OpenCVprotoBlue extends OpMode {
         double rightavgfin;
         double midavgfin;
         Mat outPut = new Mat();
-        Scalar rectColor = new Scalar(255.0, 0.0, 0.0);
+        Scalar rectColor = new Scalar(0.0, 0.0, 255.0);
 
         @Override
         public Mat processFrame(Mat input) {
@@ -144,22 +150,88 @@ public class OpenCVprotoBlue extends OpMode {
 
     @Override
     public void start() {
-        if (zone == 1) {
-
-        } else if (zone == 2) {
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+        Pose2d startPose = new Pose2d(-63, 27, Math.toRadians(0));
+        drive.setPoseEstimate(startPose);
+        if (zone == 1) { //left
+            Trajectory trajectory1 = drive.trajectoryBuilder(startPose)
+                    .splineToLinearHeading(new Pose2d(-45,27), Math.toRadians(-90))
+                    .build();
+            drive.followTrajectory(trajectory1);
+            sleep(2000);
+            ElapsedTime timer = new ElapsedTime();
+            timer.startTime();
+            while (timer.seconds() < 1) {
+                psl.setPower(0.75);
+                psr.setPower(0.75);
+            }
+           trajectory1 = drive.trajectoryBuilder(startPose)
+                   .splineToSplineHeading(new Pose2d(-45,36), Math.toRadians(90))
+                   .build();
+            drive.followTrajectory(trajectory1);
 
         } else {
-            fl.setTargetPosition(1738);
-            bl.setTargetPosition(1738);
-            fr.setTargetPosition(1738);
-            br.setTargetPosition(1738);
+            if (zone == 2) { //middle
+                ElapsedTime timer = new ElapsedTime();
+                timer.startTime();
+                while (timer.seconds() < 2) {
+                    fl.setPower(0.75);
+                    fr.setPower(0.75);
+                    bl.setPower(0.75);
+                    br.setPower(0.75);
+                }
+                timer.reset();
+                timer.startTime();
+                while (timer.seconds() < 1) {
+                    psl.setPower(0.75);
+                    psr.setPower(0.75);
+                }
+                timer.reset();
+                timer.startTime();
 
-            sleep(1000);
-
-            psl.setPower(1);
-            psr.setPower(1);
-            sleep(500);
-
+                while (timer.seconds() < 1.75) {
+                    fl.setPower(-0.75);
+                    fr.setPower(-0.75);
+                    bl.setPower(-0.75);
+                    br.setPower(-0.75);
+                }
+                timer.reset();
+                timer.startTime();
+                while (timer.seconds() < 3) {
+                    fl.setPower(-0.75);
+                    fr.setPower(0.75);
+                    bl.setPower(-0.75);
+                    br.setPower(0.75);
+                }
+                timer.reset();
+                timer.startTime();
+                while (timer.seconds() < 6) {
+                    fl.setPower(0.75);
+                    fr.setPower(0.75);
+                    bl.setPower(0.75);
+                    br.setPower(0.75);
+                }
+            } else { //right
+                ElapsedTime timer = new ElapsedTime();
+                timer.startTime();
+                while (timer.seconds() < 2) {
+                    fl.setPower(0.75);
+                    fr.setPower(0.75);
+                    bl.setPower(0.75);
+                    br.setPower(0.75);
+//                Odom stuff below (I think??)
+//                fl.setTargetPosition(1738);
+//                bl.setTargetPosition(1738);
+//                fr.setTargetPosition(1738);
+//                br.setTargetPosition(1738);
+//
+//                sleep(1000);
+//
+//                psl.setPower(1);
+//                psr.setPower(1);
+//                sleep(500);
+                }
+            }
         }
     }
 }
