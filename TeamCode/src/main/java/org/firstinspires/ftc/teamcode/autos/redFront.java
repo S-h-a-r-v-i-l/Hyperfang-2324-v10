@@ -20,6 +20,7 @@ public class redFront extends LinearOpMode {
 
     public CRServo psl = null;
     public CRServo psr = null;
+    public CRServo spider = null;
 
     @Override
     public void runOpMode() {
@@ -33,11 +34,12 @@ public class redFront extends LinearOpMode {
         bl = hardwareMap.get(DcMotorEx.class, "backLeft");
         fr = hardwareMap.get(DcMotorEx.class, "frontRight");
         br = hardwareMap.get(DcMotorEx.class, "backRight");
-        ll = hardwareMap.get(DcMotorEx.class, "leftLift");
-        lr = hardwareMap.get(DcMotorEx.class, "rightLift");
+        ll = hardwareMap.get(DcMotorEx.class, "leftSlide");
+        lr = hardwareMap.get(DcMotorEx.class, "rightSlide");
         psl = hardwareMap.get(CRServo.class, "percyL");
         psr = hardwareMap.get(CRServo.class, "percyR");
-        intake = hardwareMap.get(DcMotorEx.class, "intake");
+        intake = hardwareMap.get(DcMotorEx.class, "Intake");
+        spider = hardwareMap.get(CRServo.class, "spiderLegs");
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
