@@ -73,19 +73,19 @@ public class blueBack extends LinearOpMode {
         }
         timer.reset();
         timer.startTime();
-        while (timer.seconds() < 6) {
+        while (timer.seconds() < 2) {
             fl.setPower(0.75);
             fr.setPower(0.75);
             bl.setPower(0.75);
             br.setPower(0.75);
         }
-//        timer.reset();
-//        timer.startTime();
-//        while (timer.seconds() < 1){
-//            fl.setPower(-0.75);
-//            bl.setPower(0.75);
-//            fr.setPower(0.75);
-//            br.setPower(-0.75);
-//        }
+        timer.reset();
+        timer.startTime();
+        while (timer.seconds() < 1){
+            fl.setPower(-0.75);
+            bl.setPower(0.75);
+            fr.setPower(0.75);
+            br.setPower(-0.75);
+        }
     }
 }
