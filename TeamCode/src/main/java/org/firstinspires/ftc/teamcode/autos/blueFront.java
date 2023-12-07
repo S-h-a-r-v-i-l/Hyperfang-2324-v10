@@ -61,10 +61,10 @@ public class blueFront extends LinearOpMode {
         ElapsedTime timer = new ElapsedTime();
         timer.startTime();
         while (timer.seconds() < 2) {
-            fl.setPower(-0.75);
-            fr.setPower(-0.75);
-            bl.setPower(-0.75);
-            br.setPower(-0.75);
+            fl.setPower(0.75);
+            fr.setPower(0.75);
+            bl.setPower(0.75);
+            br.setPower(0.75);
         }
     }
 }

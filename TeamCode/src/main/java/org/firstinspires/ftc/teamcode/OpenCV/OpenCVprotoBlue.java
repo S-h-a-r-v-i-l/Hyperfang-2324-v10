@@ -40,7 +40,7 @@ public class OpenCVprotoBlue extends OpMode {
     public CRServo psl = null;
     public CRServo psr = null;
 
-    public Servo spider = null;
+    public CRServo spider = null;
     OpenCvWebcam webcam1 = null;
     int zone;
 
@@ -55,7 +55,7 @@ public class OpenCVprotoBlue extends OpMode {
         psl = hardwareMap.get(CRServo.class, "percyL");
         psr = hardwareMap.get(CRServo.class, "percyR");
         intake = hardwareMap.get(DcMotorEx.class, "Intake");
-        spider = hardwareMap.get(Servo.class, "spiderLegs");
+        spider = hardwareMap.get(CRServo.class, "spiderLegs");
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
@@ -115,9 +115,9 @@ public class OpenCVprotoBlue extends OpMode {
             Imgproc.cvtColor(input, YCbCr, Imgproc.COLOR_RGB2YCrCb);
             telemetry.addLine("Pipeline running");
 
-            Rect leftRect = new Rect(1, 1, 430, 700);
-            Rect midRect = new Rect(430, 1, 420, 700);
-            Rect rightRect = new Rect(850, 1, 430, 700);
+            Rect leftRect = new Rect(1, 1, 1, 1);
+            Rect midRect = new Rect(430, 250, 280, 300);
+            Rect rightRect = new Rect(1000, 300, 280, 350);
 
 
             input.copyTo(outPut);
@@ -137,16 +137,18 @@ public class OpenCVprotoBlue extends OpMode {
             rightavgfin = rightavg.val[2];
             midavgfin = midavg.val[2];
 
-            if (leftavgfin > rightavgfin && leftavgfin > midavgfin) {
-                telemetry.addLine("Left");
-                zone = 1;
-            } else if (midavgfin > leftavgfin && midavgfin > rightavgfin) {
-                telemetry.addLine("middle");
-                zone = 2;
-            } else {
+            if (rightavgfin > midavgfin && rightavgfin > 137.5) {
                 telemetry.addLine("Right");
                 zone = 3;
+            } else if (midavgfin > rightavgfin && midavgfin > 137.5) {
+                telemetry.addLine("Middle");
+                zone = 2;
+            } else {
+                telemetry.addLine("Left");
+                zone = 1;
             }
+            telemetry.addLine("middle: " + midavgfin);
+            telemetry.addLine("right: " + rightavgfin);
 
             return outPut;
 
@@ -155,25 +157,13 @@ public class OpenCVprotoBlue extends OpMode {
 
     @Override
     public void start() {
-        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d startPose = new Pose2d(-63, 27, Math.toRadians(0));
-        drive.setPoseEstimate(startPose);
+        fl.setPower(1000);
+        bl.setPower(1000);
+        br.setPower(1000);
+        fr.setPower(1000);
+        sleep(200);
+
         if (zone == 1) { //left
-            Trajectory trajectory1 = drive.trajectoryBuilder(startPose)
-                    .splineToLinearHeading(new Pose2d(-45,27), Math.toRadians(-90))
-                    .build();
-            drive.followTrajectory(trajectory1);
-            sleep(2000);
-            ElapsedTime timer = new ElapsedTime();
-            timer.startTime();
-            while (timer.seconds() < 1) {
-                psl.setPower(0.75);
-                psr.setPower(0.75);
-            }
-           trajectory1 = drive.trajectoryBuilder(startPose)
-                   .splineToSplineHeading(new Pose2d(-45,36), Math.toRadians(90))
-                   .build();
-            drive.followTrajectory(trajectory1);
 
         } else {
             if (zone == 2) { //middle
