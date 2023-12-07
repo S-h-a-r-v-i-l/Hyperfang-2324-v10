@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
@@ -19,7 +20,7 @@ public class blueBack extends LinearOpMode {
 
     public CRServo psl = null;
     public CRServo psr = null;
-    public CRServo spider = null;
+    public Servo spider = null;
 
     @Override
     public void runOpMode() {
@@ -38,10 +39,11 @@ public class blueBack extends LinearOpMode {
         psl = hardwareMap.get(CRServo.class, "percyL");
         psr = hardwareMap.get(CRServo.class, "percyR");
         intake = hardwareMap.get(DcMotorEx.class, "Intake");
-        spider = hardwareMap.get(CRServo.class, "spiderLegs");
+        spider = hardwareMap.get(Servo.class, "spiderLegs");
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
+        ll.setDirection(DcMotorEx.Direction.REVERSE);
         psl.setDirection(CRServo.Direction.REVERSE);
 
         fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
@@ -58,34 +60,34 @@ public class blueBack extends LinearOpMode {
         ElapsedTime timer = new ElapsedTime();
         timer.startTime();
         while (timer.seconds() < 1) {
-            fl.setPower(0.75);
-            fr.setPower(0.75);
-            bl.setPower(0.75);
-            br.setPower(0.75);
+            fl.setPower(-0.75);
+            fr.setPower(-0.75);
+            bl.setPower(-0.75);
+            br.setPower(-0.75);
         }
         timer.reset();
         timer.startTime();
         while (timer.seconds() < 3) {
-            fl.setPower(-0.75);
-            fr.setPower(0.75);
-            bl.setPower(-0.75);
-            br.setPower(0.75);
+            fl.setPower(0.75);
+            fr.setPower(-0.75);
+            bl.setPower(0.75);
+            br.setPower(-0.75);
         }
         timer.reset();
         timer.startTime();
         while (timer.seconds() < 2) {
-            fl.setPower(0.75);
-            fr.setPower(0.75);
-            bl.setPower(0.75);
-            br.setPower(0.75);
+            fl.setPower(-0.75);
+            fr.setPower(-0.75);
+            bl.setPower(-0.75);
+            br.setPower(-0.75);
         }
         timer.reset();
         timer.startTime();
         while (timer.seconds() < 1){
-            fl.setPower(-0.75);
-            bl.setPower(0.75);
-            fr.setPower(0.75);
-            br.setPower(-0.75);
+            fl.setPower(0.75);
+            bl.setPower(-0.75);
+            fr.setPower(-0.75);
+            br.setPower(0.75);
         }
     }
 }

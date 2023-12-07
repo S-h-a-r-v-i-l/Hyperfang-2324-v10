@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -38,6 +39,8 @@ public class OpenCVprotoBlue extends OpMode {
 
     public CRServo psl = null;
     public CRServo psr = null;
+
+    public Servo spider = null;
     OpenCvWebcam webcam1 = null;
     int zone;
 
@@ -47,14 +50,16 @@ public class OpenCVprotoBlue extends OpMode {
         bl = hardwareMap.get(DcMotorEx.class, "backLeft");
         fr = hardwareMap.get(DcMotorEx.class, "frontRight");
         br = hardwareMap.get(DcMotorEx.class, "backRight");
-        ll = hardwareMap.get(DcMotorEx.class, "leftLift");
-        lr = hardwareMap.get(DcMotorEx.class, "rightLift");
+        ll = hardwareMap.get(DcMotorEx.class, "leftSlide");
+        lr = hardwareMap.get(DcMotorEx.class, "rightSlide");
         psl = hardwareMap.get(CRServo.class, "percyL");
         psr = hardwareMap.get(CRServo.class, "percyR");
-        intake = hardwareMap.get(DcMotorEx.class, "intake");
+        intake = hardwareMap.get(DcMotorEx.class, "Intake");
+        spider = hardwareMap.get(Servo.class, "spiderLegs");
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
+        ll.setDirection(DcMotorEx.Direction.REVERSE);
         psl.setDirection(CRServo.Direction.REVERSE);
 
         fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
