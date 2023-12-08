@@ -2,20 +2,12 @@ package org.firstinspires.ftc.teamcode.OpenCV;
 
 import static android.os.SystemClock.sleep;
 
-import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Rect;
@@ -28,7 +20,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 @Autonomous
-public class OpenCVprotoBlue extends OpMode {
+public class OpenCVprotoRedREAL extends OpMode {
     public DcMotorEx fl = null;
     public DcMotorEx bl = null;
     public DcMotorEx fr = null;
@@ -77,7 +69,7 @@ public class OpenCVprotoBlue extends OpMode {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam1 = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
 
-        webcam1.setPipeline(new PipelineBlue());
+        webcam1.setPipeline(new PipelineRed());
 
         webcam1.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
@@ -97,7 +89,7 @@ public class OpenCVprotoBlue extends OpMode {
 
     }
 
-    class PipelineBlue extends OpenCvPipeline{
+    class PipelineRed extends OpenCvPipeline{
 
         Mat YCbCr = new Mat();
         Mat midCrop;
@@ -107,7 +99,7 @@ public class OpenCVprotoBlue extends OpMode {
         double rightavgfin;
         double midavgfin;
         Mat outPut = new Mat();
-        Scalar rectColor = new Scalar(0.0, 0.0, 255.0);
+        Scalar rectColor = new Scalar(0.0, 255.0, 0.0);
 
         @Override
         public Mat processFrame(Mat input) {
@@ -133,9 +125,9 @@ public class OpenCVprotoBlue extends OpMode {
             Scalar rightavg = Core.mean(rightCrop);
             Scalar midavg = Core.mean(midCrop);
 
-            leftavgfin = leftavg.val[2];
-            rightavgfin = rightavg.val[2];
-            midavgfin = midavg.val[2];
+            leftavgfin = leftavg.val[1];
+            rightavgfin = rightavg.val[1];
+            midavgfin = midavg.val[1];
 
             if (leftavgfin > midavgfin && leftavgfin > 137.5) {
                 telemetry.addLine("Left");
@@ -160,102 +152,109 @@ public class OpenCVprotoBlue extends OpMode {
 
 
         if (zone == 1) { //left
-            fl.setPower(0.5);
-            bl.setPower(0.5);
-            br.setPower(0.5);
-            fr.setPower(0.5);
-            sleep(400);
+            fl.setPower(0.2);
+            bl.setPower(0.2);
+            br.setPower(0.2);
+            fr.setPower(0.2);
+            sleep(910);
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
             fr.setPower(0);
             sleep(250);
-            fr.setPower(0.3);
-            br.setPower(0.3);
             fl.setPower(-0.3);
+            fr.setPower(0.3);
             bl.setPower(-0.3);
-            sleep(400);
+            fr.setPower(0.3);
+            sleep(550);
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
             fr.setPower(0);
             sleep(250);
-            intake.setPower(0.7);
+            fl.setPower(0.2);
+            bl.setPower(0.2);
+            br.setPower(0.2);
+            fr.setPower(0.2);
+            sleep(300);
+            intake.setPower(0.3);
             sleep(500);
             intake.setPower(0);
+            fl.setPower(-0.1);
+            bl.setPower(-0.1);
+            br.setPower(-0.1);
+            fr.setPower(-0.1);
+            sleep(700);
+            fl.setPower(0);
+            bl.setPower(0);
+            br.setPower(0);
+            fr.setPower(0);
 
 
         } else {
             if (zone == 2) { //middle
-                fl.setPower(0.5);
-                bl.setPower(0.5);
-                br.setPower(0.5);
-                fr.setPower(0.5);
-                sleep(450);
+                fl.setPower(0.2);
+                bl.setPower(0.2);
+                br.setPower(0.2);
+                fr.setPower(0.2);
+                sleep(910);
                 fl.setPower(0);
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
                 sleep(250);
-                intake.setPower(0.7);
+                intake.setPower(0.25);
                 sleep(500);
                 intake.setPower(0);
+                fl.setPower(-0.1);
+                bl.setPower(-0.1);
+                br.setPower(-0.1);
+                fr.setPower(-0.1);
+                sleep(700);
+                fl.setPower(0);
+                bl.setPower(0);
+                br.setPower(0);
+                fr.setPower(0);
+
             } else { //right
-                fl.setPower(0.5);
-                bl.setPower(0.5);
-                br.setPower(0.5);
-                fr.setPower(0.5);
-                sleep(400);
+                fl.setPower(0.2);
+                bl.setPower(0.2);
+                br.setPower(0.2);
+                fr.setPower(0.2);
+                sleep(910);
                 fl.setPower(0);
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
                 sleep(250);
-                fr.setPower(0.3);
-                br.setPower(0.3);
-                fl.setPower(-0.3);
-                bl.setPower(-0.3);
-                sleep(400);
+                fl.setPower(0.3);
+                fr.setPower(-0.3);
+                bl.setPower(0.3);
+                fr.setPower(-0.3);
+                sleep(550);
                 fl.setPower(0);
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
                 sleep(250);
-                intake.setPower(0.7);
+                fl.setPower(-0.2);
+                bl.setPower(-0.2);
+                br.setPower(-0.2);
+                fr.setPower(-0.2);
+                sleep(300);
+                intake.setPower(0.25);
                 sleep(500);
                 intake.setPower(0);
+                fl.setPower(-0.1);
+                bl.setPower(-0.1);
+                br.setPower(-0.1);
+                fr.setPower(-0.1);
+                sleep(700);
+                fl.setPower(0);
+                bl.setPower(0);
+                br.setPower(0);
+                fr.setPower(0);
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
