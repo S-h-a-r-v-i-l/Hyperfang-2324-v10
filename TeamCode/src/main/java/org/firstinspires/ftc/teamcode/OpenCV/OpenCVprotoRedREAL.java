@@ -129,10 +129,10 @@ public class OpenCVprotoRedREAL extends OpMode {
             rightavgfin = rightavg.val[1];
             midavgfin = midavg.val[1];
 
-            if (leftavgfin > midavgfin && leftavgfin > 137.5) {
+            if (leftavgfin > midavgfin && leftavgfin > 136.25) {
                 telemetry.addLine("Left");
                 zone = 1;
-            } else if (midavgfin > leftavgfin && midavgfin > 137.5) {
+            } else if (midavgfin > leftavgfin && midavgfin > 136.25) {
                 telemetry.addLine("Middle");
                 zone = 2;
             } else {
@@ -156,7 +156,7 @@ public class OpenCVprotoRedREAL extends OpMode {
             bl.setPower(0.2);
             br.setPower(0.2);
             fr.setPower(0.2);
-            sleep(910);
+            sleep(950);
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
@@ -172,11 +172,6 @@ public class OpenCVprotoRedREAL extends OpMode {
             br.setPower(0);
             fr.setPower(0);
             sleep(250);
-            fl.setPower(0.2);
-            bl.setPower(0.2);
-            br.setPower(0.2);
-            fr.setPower(0.2);
-            sleep(300);
             intake.setPower(0.3);
             sleep(500);
             intake.setPower(0);
@@ -197,7 +192,7 @@ public class OpenCVprotoRedREAL extends OpMode {
                 bl.setPower(0.2);
                 br.setPower(0.2);
                 fr.setPower(0.2);
-                sleep(910);
+                sleep(890);
                 fl.setPower(0);
                 bl.setPower(0);
                 br.setPower(0);
@@ -215,6 +210,8 @@ public class OpenCVprotoRedREAL extends OpMode {
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
+                sleep(250);
+
 
             } else { //right
                 fl.setPower(0.2);
@@ -249,11 +246,12 @@ public class OpenCVprotoRedREAL extends OpMode {
                 bl.setPower(-0.1);
                 br.setPower(-0.1);
                 fr.setPower(-0.1);
-                sleep(700);
+                sleep(350);
                 fl.setPower(0);
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
+                sleep(250);
             }
         }
     }

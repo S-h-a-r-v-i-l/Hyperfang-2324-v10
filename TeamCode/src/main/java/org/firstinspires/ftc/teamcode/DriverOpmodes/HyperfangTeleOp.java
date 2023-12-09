@@ -20,6 +20,8 @@ public class HyperfangTeleOp extends LinearOpMode{
     public CRServo psr = null;
     public CRServo spider = null;
 
+    public CRServo drone = null;
+
     @Override
     public void runOpMode() {
         double left;
@@ -38,6 +40,7 @@ public class HyperfangTeleOp extends LinearOpMode{
         psr = hardwareMap.get(CRServo.class, "percyR");
         intake = hardwareMap.get(DcMotorEx.class, "Intake");
         spider = hardwareMap.get(CRServo.class, "spiderLegs");
+        drone = hardwareMap.get(CRServo.class, "drone");
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
@@ -80,17 +83,26 @@ public class HyperfangTeleOp extends LinearOpMode{
             telemetry.addLine("continuous");
 
             if (gamepad2.right_bumper) {
-            psl.setPower(1);
-            psr.setPower(1);
+                psl.setPower(1);
+                psr.setPower(1);
             telemetry.addLine("hi");
             } else if (gamepad2.left_bumper) {
-            psl.setPower(-1);
-            psr.setPower(-1);
+                psl.setPower(-1);
+                psr.setPower(-1);
             telemetry.addLine("hi2");
             } else {
             psl.setPower(0);
             psr.setPower(0);
             telemetry.addLine("hi3");
+            }
+
+            if (gamepad1.right_bumper) {
+                drone.setPower(-1);
+                telemetry.addLine("hi4");
+            } else if (gamepad1.left_bumper) {
+                drone.setPower(0.25);
+            } else {
+                drone.setPower(0);
             }
 
             telemetry.update();
