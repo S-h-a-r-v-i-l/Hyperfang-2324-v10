@@ -71,9 +71,9 @@ public class OpenCVprotoRed extends OpMode {
             Imgproc.cvtColor(input, YCbCr, Imgproc.COLOR_RGB2YCrCb);
             telemetry.addLine("Pipeline running");
 
-            Rect leftRect = new Rect(1, 1, 430, 700);
-            Rect midRect = new Rect(430, 1, 420, 700);
-            Rect rightRect = new Rect(850, 1, 430, 700);
+            Rect leftRect = new Rect(1, 1, 1, 1);
+            Rect midRect = new Rect(430, 250, 280, 300);
+            Rect rightRect = new Rect(1000, 300, 280, 350);
 
 
             input.copyTo(outPut);
@@ -100,6 +100,8 @@ public class OpenCVprotoRed extends OpMode {
             } else {
                 telemetry.addLine("Right");
             }
+            telemetry.addLine("right " + rightavgfin);
+            telemetry.addLine("middle" + midavgfin);
 
             return outPut;
 
