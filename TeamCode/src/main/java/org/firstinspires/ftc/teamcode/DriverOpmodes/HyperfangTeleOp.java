@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
 public class HyperfangTeleOp extends LinearOpMode{
@@ -18,7 +19,7 @@ public class HyperfangTeleOp extends LinearOpMode{
 
     public CRServo psl = null;
     public CRServo psr = null;
-    public CRServo spider = null;
+    public Servo spider = null;
 
     @Override
     public void runOpMode() {
@@ -37,7 +38,7 @@ public class HyperfangTeleOp extends LinearOpMode{
         psl = hardwareMap.get(CRServo.class, "percyL");
         psr = hardwareMap.get(CRServo.class, "percyR");
         intake = hardwareMap.get(DcMotorEx.class, "Intake");
-        spider = hardwareMap.get(CRServo.class, "spiderLegs");
+        spider = hardwareMap.get(Servo.class, "spiderLegs");
 
         fl.setDirection(DcMotorEx.Direction.REVERSE);
         bl.setDirection(DcMotorEx.Direction.REVERSE);
