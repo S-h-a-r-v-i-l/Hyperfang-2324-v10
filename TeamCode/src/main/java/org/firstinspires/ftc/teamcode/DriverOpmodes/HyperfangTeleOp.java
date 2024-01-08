@@ -3,8 +3,10 @@ package org.firstinspires.ftc.teamcode.DriverOpmodes;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
@@ -25,11 +27,7 @@ public class HyperfangTeleOp extends LinearOpMode{
 
     @Override
     public void runOpMode() {
-        double left;
-        double right;
-        double drive;
-        double turn;
-        double max;
+        double speed; speed = 1;
 
         fl = hardwareMap.get(DcMotorEx.class, "frontLeft");
         bl = hardwareMap.get(DcMotorEx.class, "backLeft");
@@ -53,17 +51,30 @@ public class HyperfangTeleOp extends LinearOpMode{
         bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
         fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
         br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
-        fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
-        bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
-        fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
-        br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
-
+        fl.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        bl.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        fr.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        br.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
         waitForStart();
 
+        Gamepad currentGamepad1 = new Gamepad();
+        Gamepad currentGamepad2 = new Gamepad();
+
+        Gamepad previousGamepad1 = new Gamepad();
+        Gamepad previousGamepad2 = new Gamepad();
+
         while (opModeIsActive()) {
-            double y = -gamepad1.left_stick_y; // Remember, Y stick value is reversed
-            double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
-            double rx = gamepad1.right_stick_x;
+
+            previousGamepad1.copy(currentGamepad1);
+            previousGamepad2.copy(currentGamepad2);
+            currentGamepad1.copy(gamepad1);
+            currentGamepad2.copy(gamepad2);
+
+            double y = -currentGamepad1.left_stick_y * speed; // Remember, Y stick value is reversed
+            double x = currentGamepad1.left_stick_x * speed; // Counteract imperfect strafing
+            double rx = currentGamepad1.right_stick_x * speed;
+
+
 
             // Denominator is the largest motor power (absolute value) or 1
             // This ensures all the powers maintain the same ratio,
@@ -79,34 +90,29 @@ public class HyperfangTeleOp extends LinearOpMode{
             fr.setPower(frontRightPower);
             br.setPower(backRightPower);
 
-            ll.setPower(gamepad2.right_stick_y / 2);
-            lr.setPower(gamepad2.right_stick_y / 2);
-            intake.setPower(gamepad2.left_stick_y );
-            telemetry.addLine("continuous");
+            ll.setPower(currentGamepad2.right_stick_y / 2);
+            lr.setPower(currentGamepad2.right_stick_y / 2);
+            intake.setPower(currentGamepad2.left_stick_y );
 
-            if (gamepad2.right_bumper) {
+            if (currentGamepad2.right_bumper) {
                 psl.setPower(1);
                 psr.setPower(1);
-            telemetry.addLine("hi");
-            } else if (gamepad2.left_bumper) {
+            } else if (currentGamepad2.left_bumper) {
                 psl.setPower(-1);
                 psr.setPower(-1);
-            telemetry.addLine("hi2");
             } else {
-            psl.setPower(0);
-            psr.setPower(0);
-            telemetry.addLine("hi3");
+                psl.setPower(0);
+                psr.setPower(0);
             }
 
-            if (gamepad1.right_bumper) {
-                drone.setPower(-1);
-                telemetry.addLine("hi4");
-            } else if (gamepad1.left_bumper) {
-                drone.setPower(0.25);
-            } else {
-                drone.setPower(0);
-            }
+            if (currentGamepad1.right_trigger >= 0.1) {drone.setPower(-1);}
+            else if (currentGamepad1.left_trigger >= 0.1) {drone.setPower(0.25);}
+            else {drone.setPower(0);}
 
+            if (currentGamepad1.right_bumper && !previousGamepad1.right_bumper) {speed = Math.min(speed + 0.2, 1);}
+            else if (currentGamepad1.left_bumper && !previousGamepad1.left_bumper) {speed = Math.max(speed - 0.2, 0);}
+
+            telemetry.addLine("" + speed);
             telemetry.update();
             sleep(50);
         }
