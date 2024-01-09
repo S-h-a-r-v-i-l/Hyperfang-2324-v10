@@ -108,7 +108,7 @@ public class OpenCVprotoRedREAL extends OpMode {
             telemetry.addLine("Pipeline running");
 
             Rect leftRect = new Rect(40, 300, 290, 350);
-            Rect midRect = new Rect(585, 250, 290, 300);
+            Rect midRect = new Rect(585, 250, 320, 300);
             Rect rightRect = new Rect(1, 1, 1, 1);
 
 
@@ -132,7 +132,7 @@ public class OpenCVprotoRedREAL extends OpMode {
             if (leftavgfin > midavgfin && leftavgfin > 136.25) {
                 telemetry.addLine("Left");
                 zone = 1;
-            } else if (midavgfin > leftavgfin && midavgfin > 136.25) {
+            } else if (midavgfin > leftavgfin && midavgfin > 138.25) {
                 telemetry.addLine("Middle");
                 zone = 2;
             } else {
