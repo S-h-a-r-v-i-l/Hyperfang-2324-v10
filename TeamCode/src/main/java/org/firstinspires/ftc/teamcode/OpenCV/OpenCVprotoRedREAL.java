@@ -132,7 +132,7 @@ public class OpenCVprotoRedREAL extends OpMode {
             if (leftavgfin > midavgfin && leftavgfin > 136.25) {
                 telemetry.addLine("Left");
                 zone = 1;
-            } else if (midavgfin > leftavgfin && midavgfin > 138.25) {
+            } else if (midavgfin > leftavgfin && midavgfin > 136.25) {
                 telemetry.addLine("Middle");
                 zone = 2;
             } else {
@@ -143,7 +143,6 @@ public class OpenCVprotoRedREAL extends OpMode {
             telemetry.addLine("left: " + leftavgfin);
 
             return outPut;
-
         }
     }
 
