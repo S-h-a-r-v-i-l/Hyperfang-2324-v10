@@ -152,7 +152,7 @@ public class OpenCVprotoRedREAL extends OpMode {
 
         //28.9768546737 ticks per inch???
         if (zone == 1) { //left
-            /*fl.setPower(0.2);
+            fl.setPower(0.2);
             bl.setPower(0.2);
             br.setPower(0.2);
             fr.setPower(0.2);
@@ -183,7 +183,7 @@ public class OpenCVprotoRedREAL extends OpMode {
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
-            fr.setPower(0);*/
+            fr.setPower(0);
             fl.setTargetPosition(4000);
             bl.setTargetPosition(4000);
             br.setTargetPosition(4000);
