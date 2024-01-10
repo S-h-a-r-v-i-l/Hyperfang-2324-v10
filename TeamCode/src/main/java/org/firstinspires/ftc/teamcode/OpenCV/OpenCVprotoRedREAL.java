@@ -5,6 +5,7 @@ import static android.os.SystemClock.sleep;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -149,9 +150,9 @@ public class OpenCVprotoRedREAL extends OpMode {
     @Override
     public void start() {
 
-
+        //28.9768546737 ticks per inch???
         if (zone == 1) { //left
-            fl.setPower(0.2);
+            /*fl.setPower(0.2);
             bl.setPower(0.2);
             br.setPower(0.2);
             fr.setPower(0.2);
@@ -182,7 +183,16 @@ public class OpenCVprotoRedREAL extends OpMode {
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
-            fr.setPower(0);
+            fr.setPower(0);*/
+            fl.setTargetPosition(4000);
+            bl.setTargetPosition(4000);
+            br.setTargetPosition(4000);
+            fr.setTargetPosition(4000);
+            fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
 
         } else {
