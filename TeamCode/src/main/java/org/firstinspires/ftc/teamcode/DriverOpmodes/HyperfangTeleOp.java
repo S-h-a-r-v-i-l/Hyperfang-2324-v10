@@ -87,7 +87,7 @@ public class HyperfangTeleOp extends LinearOpMode{
             fl.setPower(frontLeftPower);
             bl.setPower(backLeftPower);
             fr.setPower(frontRightPower);
-            br.setPower(backRightPower);
+            br.setPower(backRightPower);`
 
             ll.setPower(currentGamepad2.right_stick_y / 2);
             lr.setPower(currentGamepad2.right_stick_y / 2);
