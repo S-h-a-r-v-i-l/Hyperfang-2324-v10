@@ -87,16 +87,16 @@ public class HyperfangTeleOp extends LinearOpMode{
             fl.setPower(frontLeftPower);
             bl.setPower(backLeftPower);
             fr.setPower(frontRightPower);
-            br.setPower(backRightPower);`
+            br.setPower(backRightPower);
 
             ll.setPower(currentGamepad2.right_stick_y / 2);
             lr.setPower(currentGamepad2.right_stick_y / 2);
             intake.setPower(currentGamepad2.left_stick_y );
 
-            if (currentGamepad2.right_bumper) {
+            if (gamepad2.right_bumper) {
                 psl.setPower(1);
                 psr.setPower(1);
-            } else if (currentGamepad2.left_bumper) {
+            } else if (gamepad2.left_bumper) {
                 psl.setPower(-1);
                 psr.setPower(-1);
             } else {
@@ -104,16 +104,16 @@ public class HyperfangTeleOp extends LinearOpMode{
                 psr.setPower(0);
             }
 
-            if (currentGamepad2.right_trigger >= 0.1) {
+            if (gamepad2.right_trigger >= 0.1) {
                 spider.setPower(1);
-            } else if (currentGamepad2.left_trigger >= 0.1) {
+            } else if (gamepad2.left_trigger >= 0.1) {
                 spider.setPower(-1);
             } else {
                 spider.setPower(0);
             }
 
-            if (currentGamepad1.right_trigger >= 0.1) {drone.setPower(-1);}
-            else if (currentGamepad1.left_trigger >= 0.1) {drone.setPower(0.25);}
+            if (gamepad1.right_trigger >= 0.1) {drone.setPower(-1);}
+            else if (gamepad1.left_trigger >= 0.1) {drone.setPower(0.25);}
             else {drone.setPower(0);}
 
             if (currentGamepad1.right_bumper && !previousGamepad1.right_bumper) {speed = Math.min(speed + 0.2, 1);}
