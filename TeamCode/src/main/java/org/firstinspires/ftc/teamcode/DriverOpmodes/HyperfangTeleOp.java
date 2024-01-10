@@ -104,13 +104,13 @@ public class HyperfangTeleOp extends LinearOpMode{
                 psr.setPower(0);
             }
 
-            if (gamepad2.right_trigger >= 0.1) {
+            /*if (gamepad2.right_trigger >= 0.1) {
                 spider.setPower(1);
             } else if (gamepad2.left_trigger >= 0.1) {
                 spider.setPower(-1);
             } else {
                 spider.setPower(0);
-            }
+            }*/
 
             if (gamepad1.right_trigger >= 0.1) {drone.setPower(-1);}
             else if (gamepad1.left_trigger >= 0.1) {drone.setPower(0.25);}
