@@ -116,7 +116,7 @@ public class OpenCVprotoBlue extends OpMode {
             telemetry.addLine("Pipeline running");
 
             Rect leftRect = new Rect(40, 300, 290, 350);
-            Rect midRect = new Rect(585, 250, 290, 300);
+            Rect midRect = new Rect(585, 250, 320, 300);
             Rect rightRect = new Rect(1, 1, 1, 1);
 
 
