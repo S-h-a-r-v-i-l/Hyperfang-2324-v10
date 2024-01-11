@@ -160,11 +160,19 @@ public class OpenCVprotoBlue extends OpMode {
 
 
         if (zone == 1) { //left
+            fl.setTargetPosition(4000);
+            bl.setTargetPosition(4000);
+            br.setTargetPosition(4000);
+            fr.setTargetPosition(4000);
+            fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             fl.setPower(0.5);
             bl.setPower(0.5);
             br.setPower(0.5);
             fr.setPower(0.5);
-            sleep(980);
+            /*sleep(980);
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
@@ -201,7 +209,7 @@ public class OpenCVprotoBlue extends OpMode {
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
-            fr.setPower(0);
+            fr.setPower(0);*/
 
 
         } else {
