@@ -184,10 +184,10 @@ public class OpenCVprotoRedREAL extends OpMode {
             bl.setPower(0);
             br.setPower(0);
             fr.setPower(0);*/
-            fl.setTargetPosition(290);
-            bl.setTargetPosition(290);
-            br.setTargetPosition(290);
-            fr.setTargetPosition(290);
+            fl.setTargetPosition(800);
+            bl.setTargetPosition(800);
+            br.setTargetPosition(800);
+            fr.setTargetPosition(800);
             fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -196,13 +196,52 @@ public class OpenCVprotoRedREAL extends OpMode {
             bl.setPower(0.5);
             br.setPower(0.5);
             fr.setPower(0.5);
+            fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            fl.setTargetPosition(50);
+            bl.setTargetPosition(50);
+            br.setTargetPosition(50);
+            fr.setTargetPosition(50);
+            fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fl.setPower(-0.5);
+            bl.setPower(-0.5);
+            br.setPower(0.5);
+            fr.setPower(0.5);
+            fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            intake.setPower(0.20);
+            sleep(500);
+            intake.setPower(0);
+            fl.setTargetPosition(-100);
+            bl.setTargetPosition(-100);
+            br.setTargetPosition(-100);
+            fr.setTargetPosition(-100);
+            fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
 
 
         } else {
             if (zone == 2) { //middle
-                fl.setPower(0.5);
+                /*fl.setPower(0.5);
                 bl.setPower(0.5);
                 br.setPower(0.5);
                 fr.setPower(0.5);
@@ -224,11 +263,42 @@ public class OpenCVprotoRedREAL extends OpMode {
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
-                sleep(250);
+                sleep(250);*/
+                fl.setTargetPosition(840);
+                bl.setTargetPosition(840);
+                br.setTargetPosition(840);
+                fr.setTargetPosition(840);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fl.setPower(0.5);
+                bl.setPower(0.5);
+                br.setPower(0.5);
+                fr.setPower(0.5);
+                fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                intake.setPower(0.20);
+                sleep(500);
+                intake.setPower(0);
+                fl.setTargetPosition(-100);
+                bl.setTargetPosition(-100);
+                br.setTargetPosition(-100);
+                fr.setTargetPosition(-100);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
             } else { //right
-                fl.setPower(0.5);
+                /*fl.setPower(0.5);
                 bl.setPower(0.5);
                 br.setPower(0.5);
                 fr.setPower(0.5);
@@ -265,7 +335,62 @@ public class OpenCVprotoRedREAL extends OpMode {
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
-                sleep(250);
+                sleep(250);*/
+                fl.setTargetPosition(800);
+                bl.setTargetPosition(800);
+                br.setTargetPosition(800);
+                fr.setTargetPosition(800);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fl.setPower(0.5);
+                bl.setPower(0.5);
+                br.setPower(0.5);
+                fr.setPower(0.5);
+                fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                fl.setTargetPosition(50);
+                bl.setTargetPosition(50);
+                br.setTargetPosition(50);
+                fr.setTargetPosition(50);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fl.setPower(0.5);
+                bl.setPower(0.5);
+                br.setPower(-0.5);
+                fr.setPower(-0.5);
+                fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+                intake.setPower(0.20);
+                sleep(500);
+                intake.setPower(0);
+                fl.setTargetPosition(-100);
+                bl.setTargetPosition(-100);
+                br.setTargetPosition(-100);
+                fr.setTargetPosition(-100);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fl.setPower(0.5);
+                bl.setPower(0.5);
+                br.setPower(-0.5);
+                fr.setPower(-0.5);
             }
         }
     }
