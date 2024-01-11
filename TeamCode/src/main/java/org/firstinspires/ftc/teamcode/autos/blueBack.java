@@ -1,8 +1,11 @@
 package org.firstinspires.ftc.teamcode.autos;
 
+import androidx.appcompat.widget.MenuPopupWindow;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -55,39 +58,109 @@ public class blueBack extends LinearOpMode {
         fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
 
+        double circumference = 1.4763 * 2 * 3.141;
+        int encoderDrivingTarget = (int) ((5/circumference)*(537.6/2));
+
         waitForStart();
 
-        ElapsedTime timer = new ElapsedTime();
-        timer.startTime();
-        while (timer.seconds() < 1) {
-            fl.setPower(0.75);
-            fr.setPower(0.75);
-            bl.setPower(0.75);
-            br.setPower(0.75);
-        }
-        timer.reset();
-        timer.startTime();
-        while (timer.seconds() < 3) {
-            fl.setPower(-0.75);
-            fr.setPower(0.75);
-            bl.setPower(-0.75);
-            br.setPower(0.75);
-        }
-        timer.reset();
-        timer.startTime();
-        while (timer.seconds() < 2) {
-            fl.setPower(0.75);
-            fr.setPower(0.75);
-            bl.setPower(0.75);
-            br.setPower(0.75);
-        }
-        timer.reset();
-        timer.startTime();
-        while (timer.seconds() < 1){
-            fl.setPower(-0.75);
-            bl.setPower(0.75);
-            fr.setPower(0.75);
-            br.setPower(-0.75);
-        }
+        fl.setTargetPosition(encoderDrivingTarget);
+        fr.setTargetPosition(encoderDrivingTarget);
+        bl.setTargetPosition(encoderDrivingTarget);
+        br.setTargetPosition(encoderDrivingTarget);
+
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+
+        fl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        bl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        fr.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        br.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+
+        encoderDrivingTarget = (int) ((8/circumference)*(537.6/2));
+
+        fl.setTargetPosition(encoderDrivingTarget);
+        fr.setTargetPosition(encoderDrivingTarget);
+        bl.setTargetPosition(encoderDrivingTarget);
+        br.setTargetPosition(encoderDrivingTarget);
+
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+
+        fl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        bl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        fr.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        br.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+
+        encoderDrivingTarget = (int) ((6.5/circumference)*(537.6/2));
+
+        fl.setTargetPosition(encoderDrivingTarget);
+        fr.setTargetPosition(encoderDrivingTarget);
+        bl.setTargetPosition(encoderDrivingTarget);
+        br.setTargetPosition(encoderDrivingTarget);
+
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+
+        fl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        bl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        fr.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        br.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+
+        encoderDrivingTarget = (int) ((5/circumference)*(537.6/2));
+
+        fl.setTargetPosition(encoderDrivingTarget);
+        fr.setTargetPosition(encoderDrivingTarget);
+        bl.setTargetPosition(encoderDrivingTarget);
+        br.setTargetPosition(encoderDrivingTarget);
+
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+        fl.setPower(0.8);
+
+        fl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        bl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        fr.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        br.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+
+
+//        ElapsedTime timer = new ElapsedTime();
+//        timer.startTime();
+//        while (timer.seconds() < 1) {
+//            fl.setPower(0.75);
+//            fr.setPower(0.75);
+//            bl.setPower(0.75);
+//            br.setPower(0.75);
+//        }
+//        timer.reset();
+//        timer.startTime();
+//        while (timer.seconds() < 3) {
+//            fl.setPower(-0.75);
+//            fr.setPower(0.75);
+//            bl.setPower(-0.75);
+//            br.setPower(0.75);
+//        }
+//        timer.reset();
+//        timer.startTime();
+//        while (timer.seconds() < 2) {
+//            fl.setPower(0.75);
+//            fr.setPower(0.75);
+//            bl.setPower(0.75);
+//            br.setPower(0.75);
+//        }
+//        timer.reset();
+//        timer.startTime();
+//        while (timer.seconds() < 1){
+//            fl.setPower(-0.75);
+//            bl.setPower(0.75);
+//            fr.setPower(0.75);
+//            br.setPower(-0.75);
+//        }
     }
 }
