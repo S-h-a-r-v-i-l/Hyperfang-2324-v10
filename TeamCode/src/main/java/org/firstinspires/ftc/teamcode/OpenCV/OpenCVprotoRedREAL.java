@@ -235,7 +235,10 @@ public class OpenCVprotoRedREAL extends OpMode {
             bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
+            fl.setPower(-0.5);
+            bl.setPower(-0.5);
+            br.setPower(-0.5);
+            fr.setPower(-0.5);
 
 
 
