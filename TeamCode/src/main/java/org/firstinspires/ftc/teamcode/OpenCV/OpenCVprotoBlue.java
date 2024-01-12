@@ -158,21 +158,13 @@ public class OpenCVprotoBlue extends OpMode {
     @Override
     public void start() {
 
-
+        //28.9768546737 ticks per inch???
         if (zone == 1) { //left
-            fl.setTargetPosition(4000);
-            bl.setTargetPosition(4000);
-            br.setTargetPosition(4000);
-            fr.setTargetPosition(4000);
-            fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            fl.setPower(0.5);
+            /*fl.setPower(0.5);
             bl.setPower(0.5);
             br.setPower(0.5);
             fr.setPower(0.5);
-            /*sleep(980);
+            sleep(950);
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
@@ -188,16 +180,6 @@ public class OpenCVprotoBlue extends OpMode {
             br.setPower(0);
             fr.setPower(0);
             sleep(250);
-            fl.setPower(0.2);
-            bl.setPower(0.2);
-            br.setPower(0.2);
-            fr.setPower(0.2);
-            sleep(300);
-            fl.setPower(0);
-            bl.setPower(0);
-            br.setPower(0);
-            fr.setPower(0);
-            sleep(250);
             intake.setPower(0.3);
             sleep(500);
             intake.setPower(0);
@@ -205,20 +187,89 @@ public class OpenCVprotoBlue extends OpMode {
             bl.setPower(-0.1);
             br.setPower(-0.1);
             fr.setPower(-0.1);
-            sleep(300);
+            sleep(700);
             fl.setPower(0);
             bl.setPower(0);
             br.setPower(0);
             fr.setPower(0);*/
+            fl.setTargetPosition(800);
+            bl.setTargetPosition(800);
+            br.setTargetPosition(800);
+            fr.setTargetPosition(800);
+            fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fl.setPower(0.5);
+            bl.setPower(0.5);
+            br.setPower(0.5);
+            fr.setPower(0.5);
+            /*fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);*/
+            sleep(1000);
+            fl.setTargetPosition(200);
+            bl.setTargetPosition(200);
+            br.setTargetPosition(1400);
+            fr.setTargetPosition(1400);
+            fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fl.setPower(-0.5);
+            bl.setPower(-0.5);
+            br.setPower(0.5);
+            fr.setPower(0.5);
+            sleep(1000);
+            fl.setPower(0);
+            bl.setPower(0);
+            br.setPower(0);
+            fr.setPower(0);
+            sleep(300);
+            fl.setTargetPosition(450);
+            bl.setTargetPosition(450);
+            br.setTargetPosition(1650);
+            fr.setTargetPosition(1650);
+            fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            fl.setPower(0.2);
+            bl.setPower(0.2);
+            br.setPower(0.2);
+            fr.setPower(0.2);
+            sleep(1000);
+            fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            intake.setPower(0.40);
+            sleep(500);
+            intake.setPower(0);
+            fl.setTargetPosition(-200);
+            bl.setTargetPosition(-200);
+            br.setTargetPosition(-200);
+            fr.setTargetPosition(-200);
+            fl.setPower(-0.5);
+            bl.setPower(-0.5);
+            br.setPower(-0.5);
+            fr.setPower(-0.5);
+            sleep(500);
+
 
 
         } else {
             if (zone == 2) { //middle
-                fl.setPower(0.5);
+                /*fl.setPower(0.5);
                 bl.setPower(0.5);
                 br.setPower(0.5);
                 fr.setPower(0.5);
-                sleep(750);
+                sleep(890);
                 fl.setPower(0);
                 bl.setPower(0);
                 br.setPower(0);
@@ -236,13 +287,40 @@ public class OpenCVprotoBlue extends OpMode {
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
-
-            } else { //right
+                sleep(250);*/
+                fl.setTargetPosition(840);
+                bl.setTargetPosition(840);
+                br.setTargetPosition(840);
+                fr.setTargetPosition(840);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 fl.setPower(0.5);
                 bl.setPower(0.5);
                 br.setPower(0.5);
                 fr.setPower(0.5);
-                sleep(850);
+                sleep(1000);
+                intake.setPower(0.20);
+                sleep(500);
+                intake.setPower(0);
+                /*fl.setTargetPosition(740);
+                bl.setTargetPosition(740);
+                br.setTargetPosition(740);
+                fr.setTargetPosition(740);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sleep(1000);*/
+
+
+            } else { //right
+                /*fl.setPower(0.5);
+                bl.setPower(0.5);
+                br.setPower(0.5);
+                fr.setPower(0.5);
+                sleep(910);
                 fl.setPower(0);
                 bl.setPower(0);
                 br.setPower(0);
@@ -263,24 +341,87 @@ public class OpenCVprotoBlue extends OpMode {
                 br.setPower(-0.2);
                 fr.setPower(-0.2);
                 sleep(300);
-                fl.setPower(0);
-                bl.setPower(0);
-                br.setPower(0);
-                fr.setPower(0);
-                sleep(250);
+                intake.setPower(0.25);
+                sleep(500);
+                intake.setPower(0);
                 fl.setPower(-0.1);
                 bl.setPower(-0.1);
                 br.setPower(-0.1);
                 fr.setPower(-0.1);
-                sleep(850);
+                sleep(350);
                 fl.setPower(0);
                 bl.setPower(0);
                 br.setPower(0);
                 fr.setPower(0);
-                sleep(250);
-                intake.setPower(0.3);
+                sleep(250);*/
+                fl.setTargetPosition(800);
+                bl.setTargetPosition(800);
+                br.setTargetPosition(800);
+                fr.setTargetPosition(800);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fl.setPower(0.5);
+                bl.setPower(0.5);
+                br.setPower(0.5);
+                fr.setPower(0.5);
+            /*fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            fl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            bl.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            fr.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+            br.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);*/
+                sleep(1000);
+                fr.setTargetPosition(200);
+                br.setTargetPosition(200);
+                bl.setTargetPosition(1400);
+                fl.setTargetPosition(1400);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setPower(-0.5);
+                br.setPower(-0.5);
+                bl.setPower(0.5);
+                fl.setPower(0.5);
+                sleep(1000);
+                fl.setPower(0);
+                bl.setPower(0);
+                br.setPower(0);
+                fr.setPower(0);
+                sleep(300);
+                fr.setTargetPosition(450);
+                br.setTargetPosition(450);
+                bl.setTargetPosition(1650);
+                fl.setTargetPosition(1650);
+                fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                fl.setPower(0.2);
+                bl.setPower(0.2);
+                br.setPower(0.2);
+                fr.setPower(0.2);
+                sleep(1000);
+                fl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+                intake.setPower(0.40);
                 sleep(500);
                 intake.setPower(0);
+                fl.setTargetPosition(-200);
+                bl.setTargetPosition(-200);
+                br.setTargetPosition(-200);
+                fr.setTargetPosition(-200);
+                fl.setPower(-0.5);
+                bl.setPower(-0.5);
+                br.setPower(-0.5);
+                fr.setPower(-0.5);
+                sleep(500);
             }
         }
     }
