@@ -27,7 +27,7 @@ public class HyperfangTeleOp extends LinearOpMode{
 
     @Override
     public void runOpMode() {
-        double speed; speed = 1;
+        double speed, lift; speed = 1; lift = 1;
 
         fl = hardwareMap.get(DcMotorEx.class, "frontLeft");
         bl = hardwareMap.get(DcMotorEx.class, "backLeft");
@@ -89,8 +89,12 @@ public class HyperfangTeleOp extends LinearOpMode{
             fr.setPower(frontRightPower);
             br.setPower(backRightPower);
 
-            ll.setPower(currentGamepad2.right_stick_y / 2);
-            lr.setPower(currentGamepad2.right_stick_y / 2);
+            ll.setPower(currentGamepad2.right_stick_y / lift);
+            lr.setPower(currentGamepad2.right_stick_y / lift);
+
+            if (currentGamepad2.y && !previousGamepad2.y) {lift = Math.min(lift + 0.2, 1);}
+            else if (currentGamepad2.a && !previousGamepad1.a) {lift = Math.max(lift - 0.2, 0);}
+
             if (gamepad2.left_stick_y > 0.1) {
                 intake.setPower(1);
             } else if (gamepad2.left_stick_y < -0.1) {
@@ -125,7 +129,8 @@ public class HyperfangTeleOp extends LinearOpMode{
             if (currentGamepad1.right_bumper && !previousGamepad1.right_bumper) {speed = Math.min(speed + 0.2, 1);}
             else if (currentGamepad1.left_bumper && !previousGamepad1.left_bumper) {speed = Math.max(speed - 0.2, 0);}
 
-            telemetry.addLine("" + speed);
+            telemetry.addLine("speed: " + speed);
+            telemetry.addLine("lift: " + lift);
             telemetry.update();
             sleep(50);
         }
