@@ -27,7 +27,7 @@ public class HyperfangTeleOp extends LinearOpMode{
 
     @Override
     public void runOpMode() {
-        double speed, lift; speed = 1; lift = 1;
+        double speed, lift; speed = 1; lift = 0.6;
 
         fl = hardwareMap.get(DcMotorEx.class, "frontLeft");
         bl = hardwareMap.get(DcMotorEx.class, "backLeft");
