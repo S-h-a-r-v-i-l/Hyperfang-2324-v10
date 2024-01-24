@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.DriverOpmodes;
 
+import static android.os.SystemClock.sleep;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -101,6 +103,12 @@ public class HyperfangTeleOp extends LinearOpMode{
                 intake.setPower(-1);
             } else {
                 intake.setPower(0);
+            }
+
+            if(gamepad1.b){
+                fl.setPower(1);
+                br.setPower(1);
+                sleep(1000);
             }
 
             if (gamepad2.right_bumper) {
