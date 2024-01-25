@@ -241,7 +241,7 @@ public class OpenCVprotoRedREAL extends OpMode {
             fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
             br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
             intake.setPower(0.20);
-            sleep(500);
+            sleep(1000);
             intake.setPower(0);
             fl.setTargetPosition(-400);
             bl.setTargetPosition(-400);
@@ -298,7 +298,7 @@ public class OpenCVprotoRedREAL extends OpMode {
                 fr.setPower(0.2);
                 sleep(3000);
                 intake.setPower(0.20);
-                sleep(500);
+                sleep(1000);
                 intake.setPower(0);
                 fl.setTargetPosition(650);
                 bl.setTargetPosition(650);
@@ -419,7 +419,7 @@ public class OpenCVprotoRedREAL extends OpMode {
                 fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
                 br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
                 intake.setPower(0.25);
-                sleep(500);
+                sleep(1000);
                 intake.setPower(0);
                 fl.setTargetPosition(-400);
                 bl.setTargetPosition(-400);
