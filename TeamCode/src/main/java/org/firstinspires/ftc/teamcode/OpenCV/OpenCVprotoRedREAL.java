@@ -240,9 +240,15 @@ public class OpenCVprotoRedREAL extends OpMode {
             bl.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
             fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
             br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+<<<<<<< Updated upstream
             intake.setPower(0.3);
             sleep(4000);
             intake.setPower(0.1);
+=======
+            intake.setPower(0.30);
+            sleep(3000);
+            intake.setPower(0);
+>>>>>>> Stashed changes
             fl.setTargetPosition(-400);
             bl.setTargetPosition(-400);
             br.setTargetPosition(-400);
@@ -293,6 +299,7 @@ public class OpenCVprotoRedREAL extends OpMode {
                 bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+<<<<<<< Updated upstream
                 fl.setPower(0.15);
                 bl.setPower(0.15);
                 br.setPower(0.15);
@@ -300,6 +307,15 @@ public class OpenCVprotoRedREAL extends OpMode {
                 sleep(5000);
                 intake.setPower(0.30);
                 sleep(4000);
+=======
+                fl.setPower(0.2);
+                bl.setPower(0.2);
+                br.setPower(0.2);
+                fr.setPower(0.2);
+                sleep(3000);
+                intake.setPower(0.3);
+                sleep(1000);
+>>>>>>> Stashed changes
                 intake.setPower(0);
                 fl.setTargetPosition(650);
                 bl.setTargetPosition(650);
@@ -426,7 +442,11 @@ public class OpenCVprotoRedREAL extends OpMode {
                 fr.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
                 br.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
                 intake.setPower(0.3);
+<<<<<<< Updated upstream
                 sleep(4000);
+=======
+                sleep(1000);
+>>>>>>> Stashed changes
                 intake.setPower(0);
                 fl.setTargetPosition(-400);
                 bl.setTargetPosition(-400);
